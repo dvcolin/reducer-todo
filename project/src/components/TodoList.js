@@ -16,9 +16,13 @@ const TodoList = () => {
         dispatch({ type: 'TOGGLE_TODO', payload: id });
     }
 
+    const clearCompleted = todos => {
+        dispatch({ type: 'CLEAR', payload: todos });
+    }
+
     return (
         <div>
-            <TodoForm addTodo={addTodo} />
+            <TodoForm addTodo={addTodo} clearCompleted={clearCompleted} />
             {state.items.map(todo => <p key={todo.id} id={todo.id} onClick={e => 
                 {
                     toggleTodo(todo.id)

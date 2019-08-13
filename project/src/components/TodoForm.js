@@ -38,6 +38,14 @@ const TodoForm = props => {
       >
         Submit
       </button>
+      <button
+        onClick={e => {
+          e.preventDefault();
+          props.clearCompleted();
+        }}
+      >
+        Clear Completed
+      </button>
     </StyledForm>
   );
 };
