@@ -1,14 +1,26 @@
 import React, { useState, useReducer } from 'react'
 
 import { initialState, todoReducer } from '../reducers/todoReducer'
+import TodoForm from './TodoForm'
+import '../App.css'
 
 const TodoList = () => {
 
     const [state, dispatch] = useReducer(todoReducer, initialState);
 
+    const addTodo = todo => {
+        dispatch({ type: 'ADD_TODO', payload: todo });
+    }
+
+    const toggleTodo = id => {
+        dispatch({ type: 'TOGGLE_TODO', payload: id });
+    }
+
     return (
         <div>
-            {state.items.map(todo => <p>{todo.item}</p>)}
+            <TodoForm addTodo={addTodo} />
+            {state.items.map(todo => <p key={todo.id} id={todo.id} onClick={(id) => toggleTodo(id)}>{todo.item}</p>)}
+            {console.log(state)}
         </div>
     )
 }
