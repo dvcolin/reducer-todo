@@ -4,13 +4,11 @@ import { initialState, todoReducer } from '../reducers/todoReducer'
 
 const TodoList = () => {
 
-    const [todos, setTodos] = useState();
-
     const [state, dispatch] = useReducer(todoReducer, initialState);
 
     return (
         <div>
-            
+            {state.items.map(todo => <p>{todo.item}</p>)}
         </div>
     )
 }
