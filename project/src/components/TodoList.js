@@ -19,7 +19,11 @@ const TodoList = () => {
     return (
         <div>
             <TodoForm addTodo={addTodo} />
-            {state.items.map(todo => <p key={todo.id} id={todo.id} onClick={(id) => toggleTodo(id)}>{todo.item}</p>)}
+            {state.items.map(todo => <p key={todo.id} id={todo.id} onClick={e => 
+                {
+                    toggleTodo(todo.id)
+                    e.target.classList.toggle('completed')
+                    }}>{todo.item}</p>)}
             {console.log(state)}
         </div>
     )
